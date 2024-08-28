@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CodedDungeon.States;
+
+ public class State{
+
+   public Game Game { get; set; }
+   public State CurrentState { get; set; }
+
+   public State(Game game) { this.Game = game; this.CurrentState = Game.CurrentState; }
+
+   public virtual void Update() { }
+ }
