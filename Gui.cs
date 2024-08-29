@@ -5,23 +5,59 @@ namespace CodedDungeon;
 public class Gui { // menus, messages, alerts,..
 
 
-   public Entity[]? Fighters { get; set; }
+   public static void DisplayMenu(string title, Dictionary<string, int> menuOptions, int cursorPos) {
+      string cursor = "o>";
+      Console.Clear();
+
+      string titleplace = $"| **** {title.ToUpper()} **** |";
+      int titlelenght = titleplace.Length;
+      string decor = "x";
+      for (int i = 1; i < titlelenght-2; i++) {
+         decor = decor.Insert(i, "-");
+      }
+      decor = decor.Insert(titlelenght -2, "-");
+      decor = decor.Insert(titlelenght -1, "x");
+
+      Console.WriteLine(decor);
+      Console.WriteLine(titleplace);
+      Console.WriteLine(decor);
+
+      foreach (var option in menuOptions) {
+         if (cursorPos == option.Value) {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"{cursor}{option.Key}");
+            Console.ResetColor();
+         }
+         else
+            Console.WriteLine($"  {option.Key}");
+      }
+
+      if (cursorPos == menuOptions.Count + 1) {
+         Console.ForegroundColor = ConsoleColor.Cyan;
+         Console.WriteLine($"{cursor}QUIT");
+         Console.ResetColor();
+      }
+      else
+         Console.WriteLine("  QUIT");
+   }
+
 
    public static void FightStats(Entity[] Fighters) {
-      string opponent = Fighters[1].GetType().ToString().Substring(13).ToUpper();
-      Hero hero = (Hero)Fighters[0];
+      Monster opponent = (Monster)Fighters[1];
+      Hero hero = (Hero)Fighters[0]; // cast en peu importe le type que c ?
       Console.WriteLine("--------------------------------");
       Console.WriteLine("|          FIGHT STATS");
       Console.WriteLine("|");
-      Console.WriteLine($"| {hero.Name} : {hero.Health}  |  {opponent} : {Fighters[1].Health}");
+      Console.WriteLine($"| {hero.Name} : {hero.Health}  |  {opponent.Name} : {opponent.Health}");
       Console.WriteLine($"| Remaining : {hero.RemainingExp}  |  Level : {hero.Level}  |  Exp : {hero.Experience}  |  Kills : {hero.KillCount}");
       Console.WriteLine("|");
       Console.WriteLine("--------------------------------");
    }
 
+
    public static void ShowVictory(Entity[] Fighters, double ExpGain) {
-      string opponent = Fighters[1].GetType().ToString().Substring(13).ToUpper();
+      Monster opponent = (Monster)Fighters[1];
       Hero hero = (Hero)Fighters[0];
-      Console.WriteLine($"{hero.Name} defeated {opponent} and earned {ExpGain} experience.");
+      Console.WriteLine($"{hero.Name} defeated {opponent.Name} and earned {ExpGain} experience.");
    }
 }

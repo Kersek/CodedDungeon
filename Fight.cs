@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CodedDungeon.Entities;
+﻿using CodedDungeon.Entities;
 
 namespace CodedDungeon;
 
@@ -24,12 +19,12 @@ public class Fight { // a pvp between 2 entities
          hero.Attack(opponent);
          opponent.Attack(hero);
          Console.Clear();
-         Gui.FightStats(Fighters);      
+         Gui.FightStats(Fighters);
       } while (hero.IsAlive == true && opponent.IsAlive == true);
 
       Console.WriteLine("Fight Over !");
 
-      if (hero.IsAlive!= true)
+      if (hero.IsAlive != true)
          return;
       else {
          Gui.ShowVictory(this.Fighters, opponent.ExpOrbs);
