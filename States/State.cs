@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodedDungeon.States;
 
- public class State{
+ public class State{ // a part of the game
 
    public Game Game { get; set; }
    public State CurrentState { get; set; }

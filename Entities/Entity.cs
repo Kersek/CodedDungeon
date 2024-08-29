@@ -6,23 +6,32 @@ using System.Threading.Tasks;
 
 namespace CodedDungeon.Entities;
 
-public class Entity{
+public class Entity{ // something that interacts 
 
    private double _health;
    private double _maxHealth;
    private double _strenght;
    private double _defense;
-   private double _exp;
+   private double _expOrbs;
+
+   private Coordinates position;
 
    public string Name { get; set; }
    public double Health { get => _health; set => _health = Math.Round(value, 1); }
    public double MaxHealth { get => _maxHealth; set => _maxHealth = Math.Round(value, 1); }
    public double Strenght { get => _strenght; set => _strenght = Math.Round(value, 1); }
    public double Defense { get => _defense; set => _defense = Math.Round(value, 1); }
-   public double Exp { get => _exp; set => _exp = Math.Round(value, 1); }
+   public double ExpOrbs { get => _expOrbs; set => _expOrbs = Math.Round(value, 1); }
 
    public int KillCount { get; set; }
    public bool IsAlive { get; set; } = true;
+
+
+   public Coordinates Position {
+      get { return position; }
+      set { position = value; }
+   }
+
 
 
    public Entity(){

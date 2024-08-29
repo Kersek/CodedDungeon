@@ -14,7 +14,7 @@ namespace CodedDungeon.Entities
         {
             Health = 50;
             Strenght = 5;
-            Exp = 10;
+            ExpOrbs = 10; // calculer en fonction de sa puissance , etc
         }
     }
 }

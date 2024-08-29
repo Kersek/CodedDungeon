@@ -7,7 +7,7 @@ using CodedDungeon.Entities;
 
 namespace CodedDungeon;
 
-public class Fight {
+public class Fight { // a pvp between 2 entities
 
    public Entity[] Fighters { get; set; }
    public int ExpGain { get; set; }
@@ -32,7 +32,7 @@ public class Fight {
       if (hero.IsAlive!= true)
          return;
       else {
-         Gui.ShowVictory(this.Fighters, opponent.Exp);
+         Gui.ShowVictory(this.Fighters, opponent.ExpOrbs);
          hero.EarnExp(opponent);
       }
       Console.ReadKey(true);

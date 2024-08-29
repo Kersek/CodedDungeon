@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CodedDungeon.States;
-public class StateMainMenu : State{
+public class StateMainMenu : State{ // main menu
 
 
    public string cursor = "o>";

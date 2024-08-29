@@ -7,7 +7,7 @@ using CodedDungeon.States;
 
 namespace CodedDungeon;
 
- public class Game {
+ public class Game { // holds main loop and stores state 
 
      public State CurrentState { get; set; }
 

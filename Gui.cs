@@ -2,7 +2,9 @@
 
 namespace CodedDungeon;
 
-public class Gui {
+public class Gui { // menus, messages, alerts,..
+
+
    public Entity[]? Fighters { get; set; }
 
    public static void FightStats(Entity[] Fighters) {

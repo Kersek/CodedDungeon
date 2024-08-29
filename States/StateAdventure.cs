@@ -7,11 +7,13 @@ using CodedDungeon.Entities;
 
 namespace CodedDungeon.States;
 
-public class StateAdventure : State{
+public class StateAdventure : State { // Central state of the game
 
+   public Map map {  get; set; } = new();
 
    public StateAdventure(Game game) : base(game){
-         
+      map.GridInit();
+      map.GridDisplay();
    }
 
    public override void Update(){
