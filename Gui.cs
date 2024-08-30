@@ -9,18 +9,14 @@ public class Gui { // menus, messages, alerts,..
       string cursor = "o>";
       Console.Clear();
 
-      string titleplace = $"| **** {title.ToUpper()} **** |";
-      int titlelenght = titleplace.Length;
-      string decor = "x";
-      for (int i = 1; i < titlelenght-2; i++) {
-         decor = decor.Insert(i, "-");
-      }
-      decor = decor.Insert(titlelenght -2, "-");
-      decor = decor.Insert(titlelenght -1, "x");
+      //string titleplace = $"| **** {title.ToUpper()} **** |";
 
-      Console.WriteLine(decor);
-      Console.WriteLine(titleplace);
-      Console.WriteLine(decor);
+      //string border = "x";
+      //for (int i = 1; i < titleplace.Length - 1; i++)
+      //   border += "-";
+      //border += "x";
+
+      //Console.WriteLine($"{border}\n{titleplace}\n{border}");
 
       foreach (var option in menuOptions) {
          if (cursorPos == option.Value) {

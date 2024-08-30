@@ -1,4 +1,5 @@
-﻿using CodedDungeon.States;
+﻿using CodedDungeon.Entities;
+using CodedDungeon.States;
 using CodedDungeon.States.Menus;
 
 namespace CodedDungeon;
@@ -7,10 +8,14 @@ public class Game { // holds main loop and stores state
 
    public State CurrentState { get; set; }
 
+   public Hero? CurrentHero { get; set; }
+
+   public List<Hero> HeroesList { get; set; } = new();
+
    private bool quitGame = false;
 
    public Game() {
-      this.CurrentState = new StateMainMenu(this);
+      this.CurrentState = new MainMenu(this);
    }
 
    public void Run() {

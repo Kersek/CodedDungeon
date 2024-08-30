@@ -29,6 +29,17 @@ public class Hero : Entity {
       RemainingExp = 10;
    }
 
+   public Hero(string name) {
+      Name = name;
+      MaxHealth = 120;
+      Health = MaxHealth;
+      Strenght = 20;
+      KillCount = 0;
+      Experience = 0;
+      Level = 0;
+      RemainingExp = 10;
+   }
+
    public override void Attack(Entity enemy){
       enemy.LooseHP(this);
       if (enemy.Health == 0){
@@ -51,5 +62,9 @@ public class Hero : Entity {
       Health = MaxHealth;
       Console.WriteLine("le heros monte de niveau !");
       Console.WriteLine($"LEVEL : {Level}   Remaining : {RemainingExp}");
+   }
+
+   public override string ToString() {
+      return $"Name: {this.Name} | HP: {this.Health}/{this.MaxHealth} | Level: {this.Level}";
    }
  }
