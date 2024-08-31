@@ -4,18 +4,16 @@ using CodedDungeon.States.Menus;
 
 namespace CodedDungeon;
 
-public class Game { // holds main loop and stores state 
+public class Game { // boucle principale de jeu + transfere les params d'un état a l'autre 
 
    public State CurrentState { get; set; }
-
    public Hero? CurrentHero { get; set; }
-
-   public List<Hero> HeroesList { get; set; } = new();
+   public List<Hero>? HeroesList { get; set; } = new();
 
    private bool quitGame = false;
 
    public Game() {
-      this.CurrentState = new MainMenu(this);
+      this.CurrentState = new MainMenu(this); // quand on lance le jeu, on lance le menu principal
    }
 
    public void Run() {

@@ -9,14 +9,14 @@ public class Gui { // menus, messages, alerts,..
       string cursor = "o>";
       Console.Clear();
 
-      //string titleplace = $"| **** {title.ToUpper()} **** |";
+      string titleplace = $"| **** {title.ToUpper()} **** |";
 
-      //string border = "x";
-      //for (int i = 1; i < titleplace.Length - 1; i++)
-      //   border += "-";
-      //border += "x";
+      string border = "x";
+      for (int i = 1; i < titleplace.Length - 1; i++)
+         border += "-";
+      border += "x";
 
-      //Console.WriteLine($"{border}\n{titleplace}\n{border}");
+      Console.WriteLine($"{border}\n{titleplace}\n{border}");
 
       foreach (var option in menuOptions) {
          if (cursorPos == option.Value) {

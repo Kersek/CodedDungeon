@@ -14,13 +14,20 @@ public abstract class Menus : State { /////// RENDRED LES TRUCS PRIVES
    public Menus(Game game) : base(game) { }
 
 
-   public override void Update() {
+   public override void Update() { 
 
       do { // tant qu'un choix n'a été fait
 
          selectedOption = 0;
 
          Gui.DisplayMenu(title, MenuOptions, cursorPos);
+
+         if (this.CurrentHero != null)
+            Console.WriteLine(this.CurrentHero.Name);
+         Console.WriteLine(this.HeroesList.Count);
+         if (this.CurrentState != null)
+            Console.WriteLine(this.CurrentState.ToString);
+         Console.ReadKey(true);
 
          ConsoleKey select = Console.ReadKey(true).Key;
 

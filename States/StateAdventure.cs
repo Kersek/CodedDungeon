@@ -12,7 +12,12 @@ public class StateAdventure : State { // Central state of the game
    }
 
    public override void Update() {
+
       Hero hero = new();
+      Console.WriteLine(this.CurrentHero.Name);
+      Console.WriteLine(this.HeroesList.Count);
+      Console.WriteLine(this.CurrentState.ToString);
+      Console.ReadKey(true);
 
       for (int i = 0; i < 200; i++) {
          Monster monster = new();
