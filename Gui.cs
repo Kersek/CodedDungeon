@@ -10,13 +10,12 @@ public class Gui { // menus, messages, alerts,..
       Console.Clear();
 
       string titleplace = $"| **** {title.ToUpper()} **** |";
-
       string border = "x";
       for (int i = 1; i < titleplace.Length - 1; i++)
          border += "-";
       border += "x";
-
       Console.WriteLine($"{border}\n{titleplace}\n{border}");
+
 
       foreach (var option in menuOptions) {
          if (cursorPos == option.Value) {
@@ -55,5 +54,17 @@ public class Gui { // menus, messages, alerts,..
       Monster opponent = (Monster)Fighters[1];
       Hero hero = (Hero)Fighters[0];
       Console.WriteLine($"{hero.Name} defeated {opponent.Name} and earned {ExpGain} experience.");
+      Console.ReadKey(true);
    }
+
+   public static void Alert(string message) {
+      Console.ForegroundColor =  ConsoleColor.Yellow;
+      Console.WriteLine($"-- {message} ! --");
+      Console.ResetColor();
+      Thread.Sleep(700);
+   }
+
+
+
+
 }

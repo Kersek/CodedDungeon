@@ -17,6 +17,8 @@ public class Hero : Entity {
    public double RemainingExp { get => _remainingExp; set => _remainingExp = Math.Round(value, 1); }
    public double Level { get => _level; set => _level = Math.Round(value, 1); }
 
+   public bool IsCurrent { get; set; }
+
 
    public Hero() {
       Name = "Herow";
@@ -38,10 +40,11 @@ public class Hero : Entity {
       Experience = 0;
       Level = 0;
       RemainingExp = 10;
+      Position = new(0,0);
    }
 
    public override void Attack(Entity enemy){
-      enemy.LooseHP(this);
+      enemy.LooseHP(this.Strenght);
       if (enemy.Health == 0){
             Console.WriteLine($"{Name} heals {Math.Round(Health * .1)} HP");
             Health += Health * .1;
@@ -67,4 +70,11 @@ public class Hero : Entity {
    public override string ToString() {
       return $"Name: {this.Name} | HP: {this.Health}/{this.MaxHealth} | Level: {this.Level}";
    }
- }
+
+   public void SetPosition(int x, int y) {
+
+   }
+
+
+
+}

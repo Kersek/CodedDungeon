@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CodedDungeon.Entities;
 
-namespace CodedDungeon.Entities;
-
-public class Entity{ // something that interacts 
+public class Entity { // something that interacts 
 
    private double _health;
    private double _maxHealth;
@@ -14,7 +8,7 @@ public class Entity{ // something that interacts
    private double _defense;
    private double _expOrbs;
 
-   private Coordinates position;
+   private Position position;
 
    public string Name { get; set; }
    public double Health { get => _health; set => _health = Math.Round(value, 1); }
@@ -24,28 +18,29 @@ public class Entity{ // something that interacts
    public double ExpOrbs { get => _expOrbs; set => _expOrbs = Math.Round(value, 1); }
 
    public int KillCount { get; set; }
-   public bool IsAlive { get; set; } = true;
+   public bool IsAlive { get; set; }
 
 
-   public Coordinates Position {
+   public Position Position {
       get { return position; }
       set { position = value; }
    }
 
 
 
-   public Entity(){
-   Health = MaxHealth;
+   public Entity() {
+      Health = MaxHealth;
+      IsAlive = true;
    }
 
-   public virtual void Attack(Entity enemy){
-      enemy.LooseHP(this);
+   public virtual void Attack(Entity enemy) {
+      enemy.LooseHP(this.Strenght);
       if (enemy.Health == 0)
          KillCount++;
    }
-   public void LooseHP(Entity enemy){
-      Health -= enemy.Strenght;
-      if (Health < 0){
+   public void LooseHP(double damage) {
+      Health -= damage;
+      if (Health < 0) {
          Health = 0;
          IsAlive = false;
       }

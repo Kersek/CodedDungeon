@@ -27,7 +27,7 @@ public abstract class Menus : State { /////// RENDRED LES TRUCS PRIVES
          Console.WriteLine(this.HeroesList.Count);
          if (this.CurrentState != null)
             Console.WriteLine(this.CurrentState.ToString);
-         Console.ReadKey(true);
+
 
          ConsoleKey select = Console.ReadKey(true).Key;
 

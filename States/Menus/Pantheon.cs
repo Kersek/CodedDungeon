@@ -26,7 +26,7 @@ public class Pantheon : Menus { // Heroes management
             break;
          case 2:
             if (HeroesList.Count == 0)
-               Console.WriteLine("NO HERO");
+               Gui.Alert("No Hero created");
             else
                SelectHero();
             break;
@@ -46,7 +46,7 @@ public class Pantheon : Menus { // Heroes management
 
 
 
-   public void SelectHero() {
+   public void SelectHero() { // Sous forme de menu TODO surbrillance currentH , rouge temp pour delete
 
       cursorPos = 1;
 
@@ -89,9 +89,12 @@ public class Pantheon : Menus { // Heroes management
 
          foreach (Hero hero in HeroesList) {
             if (selectedOption == (HeroesList.IndexOf(hero))+1) {
-               Console.WriteLine($"{hero.Name} selected !");
                this.CurrentHero = hero;
+               hero.IsCurrent = true;
+               Gui.Alert($"{hero.Name} selected");
             }
+            else
+               hero.IsCurrent = false;
          }
 
       } while (selectedOption == 0);
@@ -103,8 +106,7 @@ public class Pantheon : Menus { // Heroes management
       string name = Console.ReadLine();
       Hero hero = new Hero(name);
       HeroesList.Add(hero);
-      Console.WriteLine($"{hero.Name} arises...");
-      Console.WriteLine("New Hero created !");
+      Gui.Alert($"Hero {hero.Name} created");
    }
 
 

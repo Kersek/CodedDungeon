@@ -19,9 +19,13 @@ public class MainMenu : Menus { // main menu
    public override void SelectOption() {
       switch (selectedOption) {
          case 1:
-            Game.CurrentHero = this.CurrentHero;
-            Game.HeroesList = this.HeroesList;
-            Game.CurrentState = new StateAdventure(Game);
+            if (this.CurrentHero != null) {
+               Game.CurrentHero = this.CurrentHero;
+               Game.HeroesList = this.HeroesList;
+               Game.CurrentState = new StateAdventure(Game);
+            }
+            else
+               Gui.Alert("You must select a Hero first");
             break;
          case 2:
             Game.CurrentHero = this.CurrentHero;
