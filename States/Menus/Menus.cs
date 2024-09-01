@@ -1,7 +1,11 @@
-﻿namespace CodedDungeon.States.Menus;
+﻿using CodedDungeon.Entities;
+
+namespace CodedDungeon.States.Menus;
 
 
-public abstract class Menus : State { /////// RENDRED LES TRUCS PRIVES
+/////// RENDRED LES TRUCS PRIVES ???
+
+public abstract class Menus : State { // classe mère de mainmenu, panthéon et gameoptions
 
 
    public int cursorPos;
@@ -21,12 +25,8 @@ public abstract class Menus : State { /////// RENDRED LES TRUCS PRIVES
          selectedOption = 0;
 
          Gui.DisplayMenu(title, MenuOptions, cursorPos);
-
-         if (this.CurrentHero != null)
-            Console.WriteLine(this.CurrentHero.Name);
-         Console.WriteLine(this.HeroesList.Count);
-         if (this.CurrentState != null)
-            Console.WriteLine(this.CurrentState.ToString);
+         if ((title == "Pantheon" || title == "Coded Dungeon") && this.CurrentHero != null)
+            Console.WriteLine($"{this.CurrentHero.Name} is ready to fight !");
 
 
          ConsoleKey select = Console.ReadKey(true).Key;
@@ -46,6 +46,14 @@ public abstract class Menus : State { /////// RENDRED LES TRUCS PRIVES
             case ConsoleKey.Enter:
                selectedOption = cursorPos;
                break;
+            case ConsoleKey.NumPad0:
+            case ConsoleKey.Tab:
+               foreach (Hero hero in HeroesList) {
+                  if (cursorPos == (HeroesList.IndexOf(hero)) + 1) {
+                     
+                  }                     
+               }
+               break;
             default:
                break;
          }
@@ -54,5 +62,6 @@ public abstract class Menus : State { /////// RENDRED LES TRUCS PRIVES
       SelectOption(); // celle des enfants
    }
 
+   // en abstract pour que ce soit celle des enfants instancies qui soit appelée !?
    public abstract void SelectOption();
 }

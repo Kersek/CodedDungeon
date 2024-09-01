@@ -5,8 +5,6 @@ namespace CodedDungeon.States.Menus;
 public class Pantheon : Menus { // Heroes management
    
    
-
-
    public Pantheon(Game game) : base(game) {
 
       title = "Pantheon";
@@ -82,6 +80,10 @@ public class Pantheon : Menus { // Heroes management
                Game.CurrentHero = this.CurrentHero;
                Game.HeroesList = this.HeroesList;
                Game.CurrentState = new Pantheon(Game); // Pantheon state 
+               break;
+            case ConsoleKey.NumPad0:
+            case ConsoleKey.Tab:
+
                break;
             default:
                break;

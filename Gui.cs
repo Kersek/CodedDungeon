@@ -14,8 +14,8 @@ public class Gui { // menus, messages, alerts,..
       for (int i = 1; i < titleplace.Length - 1; i++)
          border += "-";
       border += "x";
-      Console.WriteLine($"{border}\n{titleplace}\n{border}");
 
+      Console.WriteLine($"{border}\n{titleplace}\n{border}\n");
 
       foreach (var option in menuOptions) {
          if (cursorPos == option.Value) {

@@ -41,6 +41,7 @@ public class Hero : Entity {
       Level = 0;
       RemainingExp = 10;
       Position = new(0,0);
+      symbolOnMap = 'H';
    }
 
    public override void Attack(Entity enemy){
@@ -71,8 +72,39 @@ public class Hero : Entity {
       return $"Name: {this.Name} | HP: {this.Health}/{this.MaxHealth} | Level: {this.Level}";
    }
 
-   public void SetPosition(int x, int y) {
 
+   public void Rename() {
+      bool sure = false;
+      string newName;
+      Console.WriteLine("He shall now be called...");
+      do {
+         newName = Console.ReadLine();
+         if (newName == "Jean") { //existe dans la liste des heros / nom unique
+            Console.WriteLine("tu tapel jean");
+         }
+         if (newName == "" || newName == " " || newName == null) {
+            Gui.Alert("Name can't be empty");
+            break;
+         }
+         else {
+            Console.WriteLine("Confirm ?");
+            ConsoleKey key = Console.ReadKey(true).Key;
+            switch (key) {
+               case ConsoleKey.Enter:
+               case ConsoleKey.O:
+               case ConsoleKey.Y:
+                  this.Name = newName;
+                  sure = true;
+                  break;
+               case ConsoleKey.Escape:
+               case ConsoleKey.N:
+                  sure = false;
+                  break;
+               default:
+                  break;
+            }
+         }
+      } while (!sure);
    }
 
 

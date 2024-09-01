@@ -14,5 +14,9 @@ public class Monster : Entity {
       Health = 50;
       Strenght = 5;
       ExpOrbs = 10; // calculer en fonction de sa puissance , etc
+      Position = new(5,5);
+      symbolOnMap = 'M';
    }
+
+   
 }

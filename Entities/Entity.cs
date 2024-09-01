@@ -1,6 +1,6 @@
 ﻿namespace CodedDungeon.Entities;
 
-public class Entity { // something that interacts 
+public class Entity {
 
    private double _health;
    private double _maxHealth;
@@ -20,11 +20,12 @@ public class Entity { // something that interacts
    public int KillCount { get; set; }
    public bool IsAlive { get; set; }
 
-
    public Position Position {
       get { return position; }
       set { position = value; }
    }
+
+   public char symbolOnMap;
 
 
 
@@ -35,15 +36,25 @@ public class Entity { // something that interacts
 
    public virtual void Attack(Entity enemy) {
       enemy.LooseHP(this.Strenght);
-      if (enemy.Health == 0)
+      if (enemy.IsAlive == false)
          KillCount++;
    }
+
    public void LooseHP(double damage) {
       Health -= damage;
       if (Health < 0) {
          Health = 0;
          IsAlive = false;
       }
+   }
+
+   public void Move(int x, int y, int mapW, int mapH) {
+      int newX = this.Position.X + x;
+      int newY = this.Position.Y + y;
+      if (newX < 0 || newX > (mapH-1) || newY < 0 || newY > (mapW-1))
+         return;
+      else
+         this.Position = new(newX, newY);
    }
 
 }

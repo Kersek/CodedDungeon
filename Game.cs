@@ -13,6 +13,7 @@ public class Game { // boucle principale de jeu + transfere les params d'un éta
    private bool quitGame = false;
 
    public Game() {
+      Console.CursorVisible = false;
       this.CurrentState = new MainMenu(this); // quand on lance le jeu, on lance le menu principal
    }
 
