@@ -26,6 +26,7 @@ public class MainMenu : Menus { // main menu
             }
             else
                Gui.Alert("You must select a Hero first");
+                
             break;
          case 2:
             Game.CurrentHero = this.CurrentHero;

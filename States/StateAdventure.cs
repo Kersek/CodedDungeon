@@ -35,13 +35,20 @@ public class StateAdventure : State {
    }
 
    // Maj état
-   public override void Update() {
-      lock (_lock) {
-         map.GridInit(entitiesOnMap);
-         map.GridDisplay();
-         Thread.Sleep(100);
-      }
-   }
+    public override void Update() {
+        lock (_lock) {
+            map.GridInit(entitiesOnMap);
+         Console.Clear();
+         Gui.InGameMenu(this.CurrentHero);
+            map.GridDisplay();
+            if (hero.Position.ToString() == mons.Position.ToString())
+            {
+                
+               Fight fight = new(hero,mons);
+            }
+            Thread.Sleep(100);
+        }
+    }
 
    // Déplacements et options joueur
    public void HandleInput() {
@@ -69,12 +76,19 @@ public class StateAdventure : State {
                case ConsoleKey.Escape:
                   IsRunning = false;
                   break;
+               case ConsoleKey.H:
+                  // affiche aide sur la mission 
+                  break;
+               case ConsoleKey.Tab:
+                  this.CurrentHero.Rest(); // stats inventaire
+                  break;
                default:
                   break;
             }
          }
       } while (IsRunning == true);
       PlayerThread.Join(100);
+      MonsterThread.Join(100);
       Game.CurrentHero = this.CurrentHero;
       Game.HeroesList = this.HeroesList;
       Game.CurrentState = new MainMenu(Game);

@@ -4,31 +4,30 @@ namespace CodedDungeon;
 
 public class Fight { // a pvp between 2 entities
 
-   public Entity[] Fighters { get; set; }
+    public Entity[] Fighters { get; set; }
    public int ExpGain { get; set; }
 
-   public Fight(Entity[] _Fighters) {
-      this.Fighters = _Fighters;
-      Hero hero = (Hero)this.Fighters[0];
-      Entity opponent = this.Fighters[1];
+   public Fight(Entity player, Entity enemy) {
+        Hero hero = (Hero)player;
+        
       Console.Clear();
-      Gui.FightStats(Fighters);
+      Gui.FightStats(player, enemy);
 
       do {
          Console.ReadKey(true);
-         hero.Attack(opponent);
-         opponent.Attack(hero);
+         hero.Attack(enemy);
+            enemy.Attack(hero);
          Console.Clear();
-         Gui.FightStats(Fighters);
-      } while (hero.IsAlive == true && opponent.IsAlive == true);
+         Gui.FightStats(player, enemy);
+      } while (hero.IsAlive == true && enemy.IsAlive == true);
 
       Console.WriteLine("Fight Over !");
 
       if (hero.IsAlive != true)
          return;
       else {
-         Gui.ShowVictory(this.Fighters, opponent.ExpOrbs);
-         hero.EarnExp(opponent);
+         Gui.ShowVictory(player, enemy);
+         hero.EarnExp(enemy);
       }
       Console.ReadKey(true);
    }

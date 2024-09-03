@@ -40,23 +40,24 @@ public class Hero : Entity {
       Experience = 0;
       Level = 0;
       RemainingExp = 10;
-      Position = new(0,0);
+      Position = new(0, 0);
       symbolOnMap = 'H';
    }
 
-   public override void Attack(Entity enemy){
+   public override void Attack(Entity enemy) {
       enemy.LooseHP(this.Strenght);
-      if (enemy.Health == 0){
-            Console.WriteLine($"{Name} heals {Math.Round(Health * .1)} HP");
-            Health += Health * .1;
-            KillCount++;
+      if (enemy.Health == 0) {
+         Console.WriteLine($"{Name} heals {Math.Round(Health * .1)} HP");
+         Health += Health * .1;
+         KillCount++;
       }
    }
 
+   // recevoir le double exporbs
    public void EarnExp(Entity opponent) {
       Experience += opponent.ExpOrbs;
       if (Experience >= RemainingExp)
-            LevelUp();
+         LevelUp();
    }
 
    public void LevelUp() {
@@ -72,7 +73,7 @@ public class Hero : Entity {
       return $"Name: {this.Name} | HP: {this.Health}/{this.MaxHealth} | Level: {this.Level}";
    }
 
-
+   // todo et dans pantheon
    public void Rename() {
       bool sure = false;
       string newName;
@@ -107,6 +108,8 @@ public class Hero : Entity {
       } while (!sure);
    }
 
+   // page invetaire stats
+   public void Rest() {
 
-
+   }
 }

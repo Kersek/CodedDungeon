@@ -25,11 +25,13 @@ public abstract class Menus : State { // classe mère de mainmenu, panthéon et 
          selectedOption = 0;
 
          Gui.DisplayMenu(title, MenuOptions, cursorPos);
-         if ((title == "Pantheon" || title == "Coded Dungeon") && this.CurrentHero != null)
+         if ((title == "Pantheon" || title == "Coded Dungeon") && this.CurrentHero != null) { 
             Console.WriteLine($"{this.CurrentHero.Name} is ready to fight !");
+            Console.WriteLine(CurrentHero.Position.ToString());
+            }
 
 
-         ConsoleKey select = Console.ReadKey(true).Key;
+            ConsoleKey select = Console.ReadKey(true).Key;
 
          // controle curseur
          switch (select) {

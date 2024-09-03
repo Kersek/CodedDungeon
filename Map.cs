@@ -44,7 +44,7 @@ public class Map { //
 
 
    public void GridDisplay() {
-      Console.Clear();
+      
       for (int i = 0; i < MapHeight; i++) {
          for (int j = 0; j < MapWidth; j++)
             Console.Write(grid[i, j]);
